@@ -1,0 +1,371 @@
+//Midterm Revieq Lab
+
+
+-Branching-
+
+
+//Task 01
+public class MidReviewLab {
+    public static void main(String[] args) {
+        int dist=500;
+        float fuel=35.0f;
+        
+        double avgCons= dist/fuel;
+        System.out.printf("%.3f km/l\n",avgCons);
+    }
+}
+
+
+
+//Task 2
+import java.util.Scanner;
+public class MidReviewLab {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner (System.in);
+        System.out.println("Enter Code: ");
+        int code=sc.nextInt();
+        System.out.println("Enter Quantity: ");
+        int quan=sc.nextInt();
+        
+        String item="";
+        double price=0.0;
+        
+        if(code==1){
+            item="Hot Dog";
+            price=4.00;
+        }
+        else if(code==2){
+            item="X-Salad";
+            price=4.50;
+        }
+        else if(code==3){
+            item="X-Bacon";
+            price=5.00;
+        }
+        else if(code==4){
+            item="Toast";
+            price=2.0;
+        }
+        else if(code==5){
+            item="Soda";
+            price=1.50;
+        }
+        double total= price*quan;
+        System.out.printf("Item: %s\nQuantity: %d\nTotal: $%.2f\n",item,quan,total);
+    }
+}
+
+
+
+//Task 3
+import java.util.Scanner;
+public class MidReviewLab {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner (System.in);
+        System.out.println("Value of x1: ");
+        double x1=sc.nextDouble();
+        System.out.println("Value of y1: ");
+        double y1=sc.nextDouble();
+        System.out.println("Value of x2: ");
+        double x2=sc.nextDouble();
+        System.out.println("Value of y2: ");
+        double y2=sc.nextDouble();
+        String slopeCondition="";
+        
+        double calc=Math.pow((x2-x1),2) + Math.pow((y2-y1),2);
+        double dist=Math.sqrt( calc );
+        double slope=(y2-y1)/(x2-x1) ;
+        
+        if(slope>0){
+            slopeCondition="Positive";
+        }
+        else{
+            slopeCondition="Negative";
+        }
+        System.out.printf("Distance: %.4f\nSlope: %.4f\nThe slope is %s\n",dist,slope,slopeCondition);
+    }
+}
+
+
+
+//Task 04
+import java.util.Scanner;
+public class MidReviewLab {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner (System.in);
+        System.out.println("Value of A: ");
+        double A=sc.nextDouble();
+        System.out.println("Value of B: ");
+        double B=sc.nextDouble();
+        System.out.println("Value of C: ");
+        double C=sc.nextDouble();
+        
+        double inRoot=Math.pow(B,2) - 4*A*C ;
+        if(A==0 || (A<0 || B<0 || C<0)){
+            System.out.println("Impossible to calculate");
+        }
+        else{
+            double xPos= ((-B) + Math.sqrt(inRoot) )/(2*A);
+            double xNeg= ((-B) - Math.sqrt(inRoot) )/(2*A);
+            System.out.printf("Root#1 = %.5f\nRoot#2 = %.5f\n",xPos,xNeg);
+        }
+    }
+}
+
+
+-Loop-
+
+
+//Task 05
+import java.util.Scanner;
+public class MidReviewLab {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner (System.in);
+        System.out.println("First value (a): ");
+        int a=sc.nextInt();
+        System.out.println("Value of change (d): ");
+        int d=sc.nextInt();
+        System.out.println("Last value (n): ");
+        int n=sc.nextInt();
+        
+        int i=0;
+        while(a<=n){
+            if((a+d)<=n){
+                System.out.print(a+",");
+            }
+            else{
+                System.out.println(a+" ");
+            }
+            a+=d;
+            i++;
+        }
+    }
+}
+
+
+
+//Task 06
+import java.util.Scanner;
+public class MidReviewLab {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner (System.in);
+        System.out.println("Value of N (n): ");
+        int n=sc.nextInt();
+        
+        double y=0;
+        for(int i=1;i<=n;i++){
+            if(i%4==0){
+                y+=(1.0/(-i));
+            }
+            else{
+               y+=(1.0/i);
+            }
+        }
+        System.out.printf("%.4f\n",y);
+    }
+}
+
+
+
+//Task 07 (Unfinished)
+import java.util.Scanner;
+public class MidReviewLab {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner (System.in);
+        System.out.println("Value of N (n): ");
+        int n=sc.nextInt();
+        
+        int y=1,val=0;
+        int p=1;
+        
+        int i=1;
+        while(i<=n){ 
+            if(n==1){
+                y+=2;
+            }
+            else{
+                if((i+1)%2==0){
+                    p=(y+2);
+                    p= -p;//p-=(p+p)
+                }
+                else{
+                    p=y+2;
+                }
+                val+=p;
+                i++;
+            }
+        }
+        System.out.println(y+val);
+    }
+}
+
+
+
+//Task 08 (Unfinished)
+import java.util.Scanner;
+public class MidReviewLab {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner (System.in);
+        System.out.println("Enter a number:");
+        int n=sc.nextInt();
+        int curr=0,recent=0,until=1;
+        
+        System.out.print(n+",");
+        if(n%2==0){
+            curr=n/2;
+            System.out.print(curr+",");
+            for(int i=curr;i>=1;curr--){
+                if(i%2!=0){
+                    recent=(i*3)+1;
+                    System.out.print(recent+",");
+                }
+            }
+        }
+        System.out.println(until);
+    }
+}
+
+
+
+//Task 09
+import java.util.Scanner;
+public class MidReviewLab {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner (System.in);
+        System.out.println("Enter an Integer Number: ");
+        int n=sc.nextInt();
+        int res=0;
+        int temp=n;
+        
+        /* this loop count the
+         * number of digits */
+        int count=0;
+        while(temp>0){
+            temp= (temp/10);
+            count++;
+        }
+        /* Here we store the initial
+         * values which should not be
+         * calculated more than once*/
+        int sum=(n%10);
+        res=n/10;
+        sum+=(res%10);
+        
+        /*This loop calculates the sum*/
+        int i=0;
+        while(i<count){
+            res=(res/10);
+            sum+=(res%10);
+            i++;
+        }
+        if(sum%2==0){
+            System.out.println("The number is even.");
+        }
+        else{
+            System.out.println("The number is odd.");
+        }
+    }
+}
+
+
+
+//Task 10
+import java.util.*;
+public class MidReviewLab {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner (System.in);
+        System.out.println("Enter an Integer Number: ");
+
+        int n=sc.nextInt();
+        int res=0,sum=0;
+        
+        int dig=(n%10);
+        sum=dig*(int)(Math.pow(2,0));
+        res=n/10;
+        
+        int count=0;
+        while(n>0){
+            n= (n/10);
+            count++;
+        }
+
+        for(int i=1;i<count;i++){
+            dig=(res%10);
+            res=res/10;
+            sum+=dig*Math.pow(2,i);
+        }
+        System.out.println(sum);
+    }
+}
+
+
+       
+//Task 11
+import java.util.*;
+public class MidReviewLab {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner (System.in);
+        System.out.println("Enter the amount of inputs: ");
+        int amount=sc.nextInt();
+        int sum=0,avg=0,count=0;
+        int max=-9999999;
+        int min=9999999;
+        
+        for(int i=0;i<amount;i++){
+            System.out.println("Enter number "+(i+1)+":");
+            int inp=sc.nextInt();
+            if(inp>0 && inp%2==0){
+                if(inp>max){
+                    max=inp;
+                }
+                if(inp<min){
+                    min=inp;
+                }
+                sum+=inp;
+                count++;
+            }
+        }
+        avg=(sum/count);
+        System.out.println("Max: "+max);
+        System.out.println("Min: "+min);
+        System.out.println("Average: "+avg);
+    }
+}
+
+
+
+//Task 12
+import java.util.*;
+public class MidReviewLab {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner (System.in);
+        int sum=0,avg=0,count=0;
+        int max=-9999999;
+        int min=9999999;
+        
+        for(int i=1;i>0;i++){
+            System.out.println("Enter number:");
+            int inp=sc.nextInt();
+            
+            if(inp==0){
+                break;
+            }
+            else if(inp>0){
+                if(inp%2==0){
+                    if(inp>max){
+                        max=inp;
+                    }
+                    if(inp<min){
+                        min=inp;
+                    }
+                    sum+=inp;
+                    count++;
+                }
+            }
+        }
+        avg=(sum/count);
+        System.out.println("Max: "+max);
+        System.out.println("Min: "+min);
+        System.out.println("Average: "+avg);
+    }
+}

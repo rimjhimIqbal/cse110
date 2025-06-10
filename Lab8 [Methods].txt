@@ -1,0 +1,306 @@
+//Assignment 08 (CSE110)
+
+
+//Task 01 
+
+import java.util.Scanner;
+public class assignment8{
+    public static void main(String [] args){
+        System.out.println("====A====");
+        evenChecker(10);
+        evenChecker(17);
+        System.out.println("====B====");
+        boolean result = isEven(10);
+        System.out.println( result );
+        result = isEven(17);
+        System.out.println( result );
+        System.out.println("====C====");
+        result = isPos(-5);
+        System.out.println( result );
+        result = isPos(12);
+        System.out.println( result );
+    }
+    public static void evenChecker(int value){
+        if(value%2==0){
+            System.out.println("Even!!");
+        }
+        else{
+            System.out.println("Odd!!");
+        }
+    }
+    public static boolean isEven(int value){
+        if(value%2==0){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    public static boolean isPos(int value){
+        if(value>0){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+}
+
+
+
+//Task 02
+
+import java.util.Scanner;
+public class assignment8{
+    public static void main(String [] args){
+        System.out.println("====A====");
+        double area = circleArea(5);
+        System.out.println(area);
+        System.out.println("====B====");
+        double volume = sphereVolume(5.0);
+        System.out.println(volume);
+        System.out.println("====C====");
+        findSpace(10,"circle");
+        findSpace(5,"sphere");
+        findSpace(10,"square");
+    }
+    public static double circleArea(int radius){
+        return Math.PI*radius*radius;
+    }
+    public static double sphereVolume(double radius){
+        return (4.0/3.0)* Math.PI * Math.pow(radius,3);
+    }
+    public static void findSpace(int value, String type){
+        if(type.equalsIgnoreCase("circle")){
+            int circleRadius=value/2;
+            System.out.printf("%.4f\n",circleArea(circleRadius));
+        }
+        else if(type.equalsIgnoreCase("sphere")){
+            double sphereRadius=value/2.0;
+            System.out.printf("%.4f\n",sphereVolume(sphereRadius));
+        }
+        else{
+            System.out.println("Wrong Parameter");
+        }
+    }  
+}
+
+
+
+//Task 03
+
+import java.util.Scanner;
+public class assignment8{
+    public static void main(String [] args){
+        System.out.println("====A====");
+        boolean res = isTriangle(7,5,10);
+        System.out.println( res );
+        res = isTriangle(3,2,1);
+        System.out.println( res ); 
+        System.out.println("====B====");
+        triArea(3,2,1);
+        triArea(7,5,10);
+    }
+    public static boolean isTriangle(int s1,int s2,int s3){
+        if(s1+s2>s3 && s2+s3>s1 && s1+s3>s2){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    public static void triArea(int side1,int side2,int side3){
+        if(isTriangle(side1,side2,side3)){
+            double area=calculateArea(side1,side2,side3);
+            System.out.printf("%.3f\n",area);
+        }
+        else{
+            System.out.println("Can't form triangle");
+        }
+    }
+    public static double calculateArea(int a,int b,int c){
+        double s=(a+b+c)/2.0;
+        double triArea=Math.sqrt(s*(s-a)*(s-b)*(s-c));
+        return triArea;
+    }
+}
+
+
+
+//Task 04
+
+import java.util.Scanner;
+public class assignment8{
+    public static void main(String [] args){
+        System.out.println("====A====");
+        boolean check = isPrime(7);
+        System.out.println(check);
+        check = isPrime(15);
+        System.out.println(check);
+        System.out.println("====B====");
+        check = isPerfect(6);
+        System.out.println(check);
+        check = isPerfect(33);
+        System.out.println(check);
+        System.out.println("====C====");
+        int result = special_sum(8);
+        System.out.println(result); 
+    }
+    /*number that is divisible by itself and 1*/
+    public static boolean isPrime(int n){
+        if(n<=1){
+            return false;
+        }
+        else{
+            for(int i=2;i<(n-1);i++){
+                if(n%i==0){
+                    return false;
+                }
+            }
+            return true;
+        }
+    }
+    /*a positive integer where the sum of
+     * it's proper divisors (divisors
+     * excluding itself) equal the number*/
+    public static boolean isPerfect(int num){
+        int sum=0;
+        if(num>0){
+            for(int i=1;i<num;i++){
+                if(num%i==0){
+                    sum+=i;
+                }    
+            }
+            if(sum==num){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+        else{
+            return false;
+        }
+    }
+    /*Between 1 to 8 the Prime numbers are
+     * 2,3,5,7 and 6 is a Perfect number. 
+     * So, the summation is 2+3+5+7+6=23.*/
+    public static int special_sum(int v){
+        int sum=0;
+        for(int i=1;i<=v;i++){
+            if(isPrime(i)){
+                sum+=i;
+            }
+            if(isPerfect(i)){
+                sum+=i;
+            }
+        }
+    return sum;
+    }
+}
+
+
+
+//Task 05
+
+import java.util.Scanner;
+public class assignment8{
+    public static void main(String [] args){
+        System.out.println("====A====");
+        showDots(5);
+        System.out.println();
+        showDots(3);
+        System.out.println();
+        System.out.println("====B====");
+        show_palindrome(5);
+        System.out.println();
+        show_palindrome(3);
+        System.out.println();
+        System.out.println("====C====");
+        showDiamond(5);
+        System.out.println("=========");
+        showDiamond(3);
+    }
+    public static void showDots(int times){
+        for(int i=0;i<times;i++){
+            System.out.print(".");
+        }
+    //        System.out.println(); 
+    }
+    public static void show_palindrome(int num){
+        for(int i=1;i<=num;i++){
+            System.out.print(i);
+        }
+        for(int i=num-1;i>=1;i--){
+            System.out.print(i);
+        }
+    //        System.out.println();
+    }
+    public static void showDiamond(int size){
+        for(int j=1;j<size;j++){
+            showDots(size-j);
+            show_palindrome(j);
+            showDots(size-j);
+            System.out.println();
+        }
+        show_palindrome(size);
+        System.out.println();
+        for(int j=1;j<size;j++){
+            showDots(j);
+            show_palindrome(size-j);
+            showDots(j);
+            System.out.println();
+        }
+    }
+}
+
+
+
+//Task 06
+
+import java.util.Scanner;
+public class assignment8{
+    public static void main(String [] args){
+        System.out.println("====A====");
+        double t = calcTax ( 16 , 20000 );
+        System.out.println( t ); 
+        t = calcTax ( 20 , 18000 );
+        System.out.println ( t ); 
+        System.out.println("====B====");
+        calcYearlyTax();
+    }
+    public static double calcTax(int age, int salary){
+        double tax=0.0;
+        if(age>18){
+            if(salary>=10000 && salary<=20000){
+                tax= salary*(7.0/100.0);
+                return tax;
+            }
+            else if(salary>20000){
+                tax=salary*(14.0/100.0);
+                return tax;
+            }
+            else{
+                return 0.0;
+            }
+        }
+        else{
+            return 0.0;
+        }
+    }
+    public static void calcYearlyTax(){
+        Scanner sc = new Scanner (System.in);
+        System.out.println("Enter age: ");
+        int ageInp=sc.nextInt();
+        double total=0.0;
+        for(int i=0;i<12;i++){
+            System.out.println("Enter income of each month of the year: ");
+            int incomeInp=sc.nextInt();
+            double calc=calcTax(ageInp,incomeInp);
+            System.out.println("Month"+(i+1)+" tax: "+ calc);
+            total+=calc;
+        }
+        System.out.println("Total Yearly Tax: "+total);
+    }
+        
+}
